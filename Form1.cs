@@ -7,27 +7,30 @@ namespace Exercício_Usuário
             InitializeComponent();
         }
 
-        string[] usuario = new string[7] { "Mônica", "Magali", "Bidu", "Cascão", "Cebolinha", "Anjinho", "Chico Bento" };
-        string nome;
+        string[] usuarios = new string[7] { "Mônica", "Magali", "Bidu", "Cascão", "Cebolinha", "Anjinho", "Chico Bento" };
 
         private void btnValidar_Click(object sender, EventArgs e)
         {
-           nome = txtUsuario.Text;
-           for (int i = 0; i < usuario.Length ; i++)
-            {
+            string usuario = txtUsuario.Text;
+            string foto = string.Empty;
+            int i = 0;
 
-                if (nome == usuario[i])
+           for (i = 0; i < usuarios.Length; i++)
+            {
+                if (usuario == usuarios[i])
                 {
-                    string foto = "C:\\fotos\\" + usuario[i] + ".jpg";
-                    pictFoto.ImageLocation = foto;
+                    foto = "C:\\fotos\\" + usuario + ".jpg";
+                    break;
                 }
                 else 
                 {
-                    MessageBox.Show("Esse usuário não existe ou não foi escrito corretamente.", "Erro: Nome de usuário!");
-                    break;
+                    if(i == usuario.Length -1) {
+                        MessageBox.Show("Esse usuário não existe ou não foi escrito corretamente.", "Erro: Nome de usuário!");
+                        break;
+                    }
                 }
             }
-           
+            pictFoto.ImageLocation = foto;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
